@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block container %}
+
+<div class="form p-2" style="height: auto;">
+        <div class="account ml-3 mr-3">
+            <div class="content-section">
+                <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="text-center border-bottom mt-10 mb-10">Wyszukaj lot</legend>
+                        <div class="form-group">
+                            {{ form.depAir.label(class="form-control-label ml-2") }}
+                            {{ form.depAir(class="form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.arrAir.label(class="form-control-label ml-2") }}
+                            {{ form.arrAir(class="form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.depDate.label(class="form-control-label ml-2") }}
+                            {{ form.depDate(class="form-control form-control-lg") }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.arrDate.label(class="form-control-label ml-2") }}
+                            {{ form.arrDate(class="form-control form-control-lg") }}
+                        </div>
+
+                    </fieldset>
+                    <div class="form-gruop text-center mt-2 mb-1">
+                        {{ form.submit(class="btn") }}
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock container %}

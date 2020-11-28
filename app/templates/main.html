@@ -12,21 +12,24 @@
         </div>
         <div class="mid">
           <div class="text-center">
-            <button type="button" class="mybtn">
-              <i class="fas fa-search"></i> <br><br>
-              Szukaj
-            </button>
+            <a href="{{ url_for('search') }}">
+                <button type="button" class="mybtn">
+                    <i class="fas fa-search"></i> <br><br>
+                    Szukaj
+                </button>
+            </a>
           </div>
         </div>
         <div class="mid">
           <div class="text-center">
-            <button type="button" class="mybtn">
-              <i class="fas fa-database"></i> <br><br>
-              Zarządzaj
-            </button>
+            <a href="{{ url_for('database_menegment') }}">
+                <button type="button" class="mybtn">
+                    <i class="fas fa-database"></i> <br><br>
+                    Zarządzaj
+                </button>
+            </a>
           </div>
         </div>
-        </div>
-      </div>
+</div>
 
 {% endblock container %}

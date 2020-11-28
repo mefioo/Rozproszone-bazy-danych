@@ -25,13 +25,45 @@
                     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="../assets/ico/favicon.png">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="bootstrap.css" rel="stylesheet">
+    <link href="bootstrap-responsive.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles7.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles13.css') }}">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+    // Setup - add a text input to each footer cell
+    $('#example tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="Szukaj '+title+'" />' );
+    } );
+
+    // DataTable
+    var table = $('#example').DataTable({
+        initComplete: function () {
+            // Apply the search
+            this.api().columns().every( function () {
+                var that = this;
+
+                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+                    if ( that.search() !== this.value ) {
+                        that
+                            .search( this.value )
+                            .draw();
+                    }
+                } );
+            } );
+        }
+    });
+
+    } );
+  </script>
   </head>
 
   <body>

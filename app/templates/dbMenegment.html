@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block container %}
+
+<div class="row mr-0 mb-5">
+        <div class="btn-group" role="group">
+            <a href="{{ url_for('add_flight') }}">
+                <button type="button" class="mybtn mybtn2 mybtn3">
+                    <i class="fas fa-plus text-center"></i> <br><br>
+                        Dodaj lot
+                </button>
+            </a>
+            <a href="#">
+                <button type="button" class="mybtn mybtn3">
+                    <i class="fas fa-plus text-center"></i> <br><br>
+                        Dodaj samolot
+                </button>
+            </a>
+        </div>
+</div>
+<div class="row">
+      <div class="btn-group" role="group">
+          <a href="#">
+              <button type="button" class="mybtn mybtn2 mybtn3">
+                  <i class="fas fa-edit text-center"></i> <br><br>
+                      Edytuj cenę lotu
+              </button>
+          </a>
+          <a href="#">
+              <button type="button" class="mybtn mybtn3">
+                  <i class="fas fa-edit text-center"></i> <br><br>
+                      Edytuj numer dokumentu
+              </button>
+          </a>
+      </div>
+</div>
+  <div class="row mt-5 mb-5">
+    <div class="btn-group" role="group">
+        <a href="#">
+            <button type="button" class="mybtn mybtn3">
+                <i class="fas fa-trash-alt text-center"></i> <br><br>
+                    Usuń pasażera
+            </button>
+        </a>
+        <a href="#">
+            <button type="button" class="mybtn mybtn3">
+                <i class="fas fa-trash-alt text-center"></i> <br><br>
+                    Usuń samolot
+            </button>
+        </a>
+        <a href="#">
+            <button type="button" class="mybtn mybtn3">
+                <i class="fas fa-trash-alt text-center"></i> <br><br>
+                    Usuń lot-pasażer
+            </button>
+        </a>
+    </div>
+</div>
+
+
+{% endblock container %}

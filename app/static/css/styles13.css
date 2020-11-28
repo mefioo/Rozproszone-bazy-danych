@@ -66,6 +66,15 @@ body {
     box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.1);
 }
 
+.mybtn3 {
+    margin-right: 10px;
+    margin-left: 140px;
+}
+
+.mybtn2 {
+    margin-left: 320px;
+}
+
 .mybtn:hover,
 .mybtn:focus
 {
@@ -85,4 +94,9 @@ body {
 
 .fas {
     font-size: 30px;
+}
+
+.row {
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
