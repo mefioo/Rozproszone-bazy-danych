@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect
+from flask import render_template, redirect, url_for, flash
 from app import app, database_connection
 from app.forms import SearchFlight
 
@@ -21,17 +21,20 @@ def database_menegment():
 @app.route('/search', methods=['GET', 'POST'])
 def search():
     form = SearchFlight()
-    form.depAir.choices = db.selectAirports()
-    form.arrAir.choices = db.selectAirports()
-
+    flightList = db.selectFligths()
+    flights = []
+    for flight in flightList:
+        flights.append(flight[0])
+    form.flightId.choices = flights
+    data = db.selectFlightsForTable()
     if form.validate_on_submit():
-        depAir = form.depAir.data[-4:-1]
-        arrAir = form.arrAir.data[-4:-1]
-        flights = db.selectFligths(depAir, arrAir)
-
-    else:
-        flash('Coś poszło nie tak!', 'danger')
-    return render_template('search.html', title='Szukaj', form=form)
+        passId = db.selectPassengerIdByDocument(form.documentNumber.data)
+        if db.insertFlightPassenger(passId, form.flightId.data) == True:
+            flash('Rezerwacja została dodana!', 'success')
+        else:
+            flash('Coś poszło nie tak!', 'danger')
+        return redirect(url_for('main'))
+    return render_template('search.html', title='Szukaj', data=data, form=form)
 
 
 

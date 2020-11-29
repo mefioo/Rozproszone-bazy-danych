@@ -32,10 +32,15 @@
     <link href="bootstrap-responsive.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles13.css') }}">
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css"></script>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles15.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/datatable2.css') }}">
+
     <script type="text/javascript">
     $(document).ready(function() {
     // Setup - add a text input to each footer cell
@@ -78,6 +83,21 @@
       </div>
     </div>
 
+    <div class="container mr-0" style="height: 40px;">
+        <div>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{category}} text-center ml-2 mr-2">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+
+    </div>
+
     <div class="container">
 
       {% block container %}
@@ -85,12 +105,6 @@
       {% endblock container %}
 
     </div> <!-- /container -->
-    <footer class="page-footer font-small unique-color-dark">
-      <div class="footer-copyright text-center">
-        <p class="text-primary foottext">
-          &copy; 2020 Copyrights: Maciej Adamski
-        </p>
-      </div>
-    </footer>
+
   </body>
 </html>

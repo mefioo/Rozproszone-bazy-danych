@@ -3,17 +3,10 @@ from wtforms import StringField, SubmitField, FloatField, SelectField, DateField
 from wtforms.validators import DataRequired, Length
 
 
-class AddFlight(FlaskForm):
-    id = StringField('Id lotu', validators=[DataRequired(), Length(max=6)])
-    depAir = SelectField()
-    arrAir = SelectField()
-
-
 class SearchFlight(FlaskForm):
-    depDate = StringField('Data wylotu', validators=[DataRequired()])
-    arrDate = StringField('Data przylotu', validators=[DataRequired()])
-    submit = SubmitField('Szukaj')
-    depAir = SelectField('Wylot', choices=[], validators=[DataRequired()])
-    arrAir = SelectField('Przylot', choices=[], validators=[DataRequired()])
-    cheap = BooleanField('Czy tanie loty?')
-    notEmpty = BooleanField('Czy loty z bez wolnego miejsca?')
+    name = StringField('Imię', validators=[DataRequired()])
+    surname = StringField('Nazwisko', validators=[DataRequired()])
+    documentType = SelectField('Typ dokumentu', choices=[('1', 'Dowod osobisty'), ('2', 'Paszport')])
+    documentNumber = StringField('Numer dokumentu', validators=[DataRequired()])
+    flightId = SelectField('ID lotu', choices=[])
+    submit = SubmitField('Rezerwuj')

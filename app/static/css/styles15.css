@@ -13,7 +13,7 @@ body {
 
 
 
-.page-footer
+.page-footer, footer
 {
     position: absolute;
     bottom: 0;
@@ -98,5 +98,4 @@ body {
 
 .row {
     margin-top: 50px;
-    margin-bottom: 100px;
 }

@@ -33,8 +33,8 @@ def selectAirports():
         pass
 
 
-def selectFligths(depAir, arrAir):
-    sql_query = "select * from flight where departure_airport_id='{}' and arrival_airport_id='{}'".format(depAir, arrAir)
+def selectFligths():
+    sql_query = "select flight_id, airline from vflight"
     cursor.execute(sql_query)
     result = cursor.fetchall()
     try:
@@ -43,12 +43,32 @@ def selectFligths(depAir, arrAir):
         pass
 
 
-def addFlight(data):
-    sql_query = "INSERT INTO AIRPORT@RYAN2WIZZ (AIRPORT_ID, CITY) VALUES ('{}', '{}')".format(1, 2)
+def selectFlightsForTable():
+    sql_query = "select * from vflight"
+    cursor.execute(sql_query)
+    result = cursor.fetchall()
     try:
-        cursor.execute(sql_query)
-        con.commit()
+        return result
     except Exception as e:
         pass
 
 
+def selectPassengerIdByDocument(docId):
+    sql_query = "select passenger_id from passenger where document_number='{}'".format(docId)
+    cursor.execute(sql_query)
+    result = cursor.fetchall()
+    result = result[0]
+    try:
+        return result[0]
+    except Exception as e:
+        pass
+
+
+def insertFlightPassenger(passId, flightId):
+    sql_query = "insert into flight_passenger (passenger_id, flight_id) values ('{}', '{}')".format(passId, flightId)
+    try:
+        cursor.execute(sql_query)
+        con.commit()
+        return True
+    except Exception as e:
+        return False
